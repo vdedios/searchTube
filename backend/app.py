@@ -33,7 +33,7 @@ def get_search_ids(keyword, page_token):
 def get_video_list(list):
     search_req = youtube.videos().list(
             id=list['ids'],
-            part='snippet,statistics',
+            part='id,snippet,statistics',
         )
     return search_req.execute()
 
