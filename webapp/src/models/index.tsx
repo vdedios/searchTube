@@ -5,4 +5,5 @@ export interface VideoData {
   description: string;
   thumbnail: string;
   videoUrl: string;
+  publishedAt: string;
 }

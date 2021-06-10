@@ -2,8 +2,6 @@ import { VideoData } from '../models';
 
 class ApiClient {
 
-  private _url: string;
-
   constructor() {
     this._url = `${process.env.REACT_APP_BACKEND_URL}`;
   }
@@ -13,11 +11,12 @@ class ApiClient {
     return this._parseData(data);
   }
 
+  private _url: string;
 
   private async _fetchData(keyword: string, page: string): Promise<any> {
     let path = page
-      ? `api/search?keyword=${keyword}`
-      : `api/search?keyword=${keyword}&page=${page}`;
+      ? `api/search?keyword=${keyword}&page=${page}`
+      : `api/search?keyword=${keyword}`;
 
     try {
       const res = await fetch(`${this._url}/${path}`)
@@ -35,8 +34,9 @@ class ApiClient {
         channelTitle: el.snippet.channelTitle,
         viewCount: el.statistics.viewCount,
         description: el.snippet.description,
-        thumbnail: el.snippet.thumbnails,
+        thumbnail: el.snippet.thumbnails.medium.url,
         videoUrl: `https://www.youtube.com/watch?v=${el.id}`,
+        publishedAt: el.snippet.publishedAt,
       }))
     );
   }

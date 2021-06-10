@@ -2,6 +2,7 @@
 
 import os
 from flask import Flask, request
+from flask_cors import CORS
 from googleapiclient.discovery import build
 
 api_key = os.getenv('API_KEY')
@@ -38,6 +39,8 @@ def get_video_list(list):
     return search_req.execute()
 
 app = Flask(__name__)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 @app.route("/api/search", methods=['GET'])
 def search_controller():
     keyword = request.args.get('keyword')
