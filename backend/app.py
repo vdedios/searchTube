@@ -2,6 +2,7 @@
 
 import os
 from flask import Flask, request
+from flask_cors import CORS
 from googleapiclient.discovery import build
 
 api_key = os.getenv('API_KEY')
@@ -11,11 +12,15 @@ def filter_ids(res):
     string_ids = ''
     for item in res['items']:
         string_ids += item['id']['videoId'] + ','
+    if ('nextPageToken' in res.keys()):
+        nextPageToken = res['nextPageToken']
+    else:
+        nextPageToken = ''
     list = {
         'ids': string_ids[:-1],
-        'nextPageToken': res['nextPageToken'],
+        'nextPageToken': nextPageToken,
     }
-    print(list['ids'])
+
     return list
 
 def get_search_ids(keyword, page_token):
@@ -33,11 +38,14 @@ def get_search_ids(keyword, page_token):
 def get_video_list(list):
     search_req = youtube.videos().list(
             id=list['ids'],
-            part='snippet,statistics',
+            part='id,snippet,statistics',
         )
     return search_req.execute()
 
 app = Flask(__name__)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
+
+
 @app.route("/api/search", methods=['GET'])
 def search_controller():
     keyword = request.args.get('keyword')
