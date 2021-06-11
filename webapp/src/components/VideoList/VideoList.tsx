@@ -14,32 +14,26 @@ const client = new ApiClient();
 const VideoList: React.FC<VideoListProps> = ({ keyword }: VideoListProps) => {
 
     let nextPage = useRef('');
-    let paginate = useRef(true);
-    let loading = useRef(false);
+    let videos = useRef<Array<VideoData>>([]);
 
     const [maxPagination, setMaxPagination] = useState(2);
-    const [videos, setVideos] = useState<Array<VideoData>>([]);
+    const [load, setLoad] = useState(true);
 
     const handleBottomScroll = (ev: UIEvent<HTMLDivElement>) => {
         const target = ev.target as Element;
 
-        if (
-            target.scrollHeight - target.scrollTop === target.clientHeight
-            && !loading.current
-         ) {
+        if (target.scrollHeight - target.scrollTop === target.clientHeight && maxPagination > 1) {
+            setLoad(true);
             setMaxPagination(maxPagination - 1);
-            paginate.current = true;
         }
     }
 
     useEffect(() => {
-        if (!loading.current && maxPagination > 0 && paginate.current) {
-            loading.current = true;
-            paginate.current = false;
+        if (load && maxPagination > 0) {
             client.getSearchResults(keyword, nextPage.current)
                 .then(data => {
-                    loading.current = false;
-                    setVideos(videos.concat(data.videos));
+                    videos.current = videos.current.concat(data.videos);
+                    setLoad(false);
                     nextPage.current = data.nextPageToken;
                     if (!nextPage.current) {
                         setMaxPagination(0);
@@ -47,7 +41,7 @@ const VideoList: React.FC<VideoListProps> = ({ keyword }: VideoListProps) => {
                 })
                 .catch(err => console.error(err));
         }
-    }, [maxPagination, keyword, videos]);
+    }, [maxPagination, keyword, load]);
 
 
     return (
@@ -56,8 +50,9 @@ const VideoList: React.FC<VideoListProps> = ({ keyword }: VideoListProps) => {
                 onScroll={handleBottomScroll}
                 style={{ overflowY: 'scroll', position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, }}
             >
+                <h3>{`Search Results for "${keyword}"`}</h3>
                 {
-                    videos.map((video: VideoData) =>
+                    videos.current.map((video: VideoData) =>
                         <Video
                             key={video.title}
                             title={video.title}
@@ -70,8 +65,8 @@ const VideoList: React.FC<VideoListProps> = ({ keyword }: VideoListProps) => {
                         />
                     )
                 }
+                {load && <Loader />}
             </div>
-            {loading.current && <Loader />}
         </>
     );
 };
