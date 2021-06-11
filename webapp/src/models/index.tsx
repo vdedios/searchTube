@@ -7,3 +7,8 @@ export interface VideoData {
   videoUrl: string;
   publishedAt: string;
 }
+
+export interface SearchResults {
+  videos: VideoData[];
+  nextPageToken: string;
+}

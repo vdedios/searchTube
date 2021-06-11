@@ -1,4 +1,4 @@
-import { VideoData } from '../models';
+import { VideoData, SearchResults } from '../models';
 
 class ApiClient {
 
@@ -6,7 +6,7 @@ class ApiClient {
     this._url = `${process.env.REACT_APP_BACKEND_URL}`;
   }
 
-  public async getSearchResults(keyword: string, page = ''): Promise<VideoData[]> {
+  public async getSearchResults(keyword: string, page = ''): Promise<SearchResults> {
     const data = await this._fetchData(keyword, page);
     return this._parseData(data);
   }
@@ -27,9 +27,8 @@ class ApiClient {
     }
   }
 
-  private _parseData(data: any): VideoData[] {
-    return (
-      data.items.map((el: any) => ({
+  private _parseData(data: any): SearchResults {
+    const videos: VideoData[] = data.items.map((el: any) => ({
         title: el.snippet.title,
         channelTitle: el.snippet.channelTitle,
         viewCount: el.statistics.viewCount,
@@ -37,10 +36,13 @@ class ApiClient {
         thumbnail: el.snippet.thumbnails.medium.url,
         videoUrl: `https://www.youtube.com/watch?v=${el.id}`,
         publishedAt: el.snippet.publishedAt,
-      }))
-    );
-  }
+      }));
 
+    return ({
+      videos: videos,
+      nextPageToken: data.nextPageToken,
+    })
+  }
 }
 
 export default ApiClient;

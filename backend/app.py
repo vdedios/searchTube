@@ -12,11 +12,14 @@ def filter_ids(res):
     string_ids = ''
     for item in res['items']:
         string_ids += item['id']['videoId'] + ','
+    if ('nextPageToken' in res.keys()):
+        nextPageToken = res['nextPageToken']
+    else:
+        nextPageToken = ''
     list = {
         'ids': string_ids[:-1],
-        'nextPageToken': res['nextPageToken'],
+        'nextPageToken': nextPageToken,
     }
-    print(list['ids'])
     return list
 
 def get_search_ids(keyword, page_token):
