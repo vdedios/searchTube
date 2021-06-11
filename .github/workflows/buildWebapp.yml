@@ -9,7 +9,8 @@ on:
 jobs:
   build:
 
-    runs-on: ${{matrix.os}}
+    runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [15.x]
@@ -23,6 +24,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies...
-      run: npm --prefix webapps/ install
+      run: npm --prefix webapp/ install
     - name: ...build webapp... 
-      run: npm --prefix webapps/ run build
+      run: npm --prefix webapp/ run build
