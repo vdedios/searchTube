@@ -20,6 +20,7 @@ def filter_ids(res):
         'ids': string_ids[:-1],
         'nextPageToken': nextPageToken,
     }
+
     return list
 
 def get_search_ids(keyword, page_token):
@@ -43,6 +44,7 @@ def get_video_list(list):
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
+
 
 @app.route("/api/search", methods=['GET'])
 def search_controller():
