@@ -1,5 +1,5 @@
 import React from 'react';
-import { VideoData } from '../../models';
+import { VideoData } from '../../../../models';
 
 const Video: React.FC<VideoData> = ({
   title,

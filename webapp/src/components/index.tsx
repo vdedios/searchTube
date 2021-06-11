@@ -1,9 +1,7 @@
 import SearchBox from './SearchBox/SearchBox'
-import Video from './Video/Video';
-import Loader from './Loader/Loader';
+import VideoList from './VideoList/VideoList';
 
 export {
 	SearchBox,
-	Video,
-	Loader,
+	VideoList,
 }
