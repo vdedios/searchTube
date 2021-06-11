@@ -14,7 +14,8 @@ const client = new ApiClient();
 const VideoList: React.FC<VideoListProps> = ({ keyword }: VideoListProps) => {
 
     let nextPage = useRef('');
-    let loading = useRef(true);
+    let paginate = useRef(true);
+    let loading = useRef(false);
 
     const [maxPagination, setMaxPagination] = useState(2);
     const [videos, setVideos] = useState<Array<VideoData>>([]);
@@ -22,33 +23,31 @@ const VideoList: React.FC<VideoListProps> = ({ keyword }: VideoListProps) => {
     const handleBottomScroll = (ev: UIEvent<HTMLDivElement>) => {
         const target = ev.target as Element;
 
-        if (target.scrollHeight - target.scrollTop === target.clientHeight) {
-            !loading.current && setMaxPagination(maxPagination - 1);
+        if (
+            target.scrollHeight - target.scrollTop === target.clientHeight
+            && !loading.current
+         ) {
+            setMaxPagination(maxPagination - 1);
+            paginate.current = true;
         }
     }
 
     useEffect(() => {
-        client.getSearchResults(keyword)
-            .then(data => {
-                loading.current = false;
-                setVideos(data.videos);
-                nextPage.current = data.nextPageToken;
-            })
-            .catch(err => console.error(err));
-    }, []);
-
-    useEffect(() => {
-        if (!loading.current && maxPagination > 0 && nextPage.current) {
+        if (!loading.current && maxPagination > 0 && paginate.current) {
             loading.current = true;
+            paginate.current = false;
             client.getSearchResults(keyword, nextPage.current)
                 .then(data => {
+                    loading.current = false;
                     setVideos(videos.concat(data.videos));
                     nextPage.current = data.nextPageToken;
-                    loading.current = false;
+                    if (!nextPage.current) {
+                        setMaxPagination(0);
+                    }
                 })
                 .catch(err => console.error(err));
         }
-    }, [maxPagination]);
+    }, [maxPagination, keyword, videos]);
 
 
     return (

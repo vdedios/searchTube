@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, UIEvent } from 'react';
+import React, { useState } from 'react';
 
 import { SearchBox, VideoList } from './index'
 
