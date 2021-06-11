@@ -1,0 +1,28 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
+
+jobs:
+  build:
+
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        node-version: [15.x]
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2.1.4
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies...
+      run: npm --prefix webapps/ install
+    - name: ...build webapp... 
+      run: npm --prefix webapps/ run build
