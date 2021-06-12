@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, UIEvent } from 'react';
 import ApiClient from '../../services/ApiClient';
 import { VideoData } from '../../models';
 import { Video, Loader } from './components';
-
+import { Title } from './VideoList.styled';
 
 interface VideoListProps {
     keyword: string;
@@ -50,7 +50,7 @@ const VideoList: React.FC<VideoListProps> = ({ keyword }: VideoListProps) => {
                 onScroll={handleBottomScroll}
                 style={{ overflowY: 'scroll', position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, }}
             >
-                <h3>{`Search Results for "${keyword}"`}</h3>
+                <Title>{`Search Results for "${keyword}"`}</Title>
                 {
                     videos.current.map((video: VideoData) =>
                         <Video
