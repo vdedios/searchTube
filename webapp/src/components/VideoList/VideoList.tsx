@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import ApiClient from '../../services/ApiClient';
 import { VideoData, KeywordParam } from '../../models';
 import { Video, Loader, NotFound } from './components';
-import { Title } from './VideoList.styled';
+import { Title, Wrapper } from './VideoList.styled';
 import { ui } from '../../mocks';
 
 const client = new ApiClient();
@@ -51,30 +51,25 @@ const VideoList: React.FC = () => {
 
 
     return (
-        <>
-            <div
-                onScroll={handleBottomScroll}
-                style={{ overflowY: 'scroll', position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, }}
-            >
-                <Title>{`${ui.videos.result} "${keyword}"`}</Title>
-                {
-                    videos.current.map((video: VideoData) =>
-                        <Video
-                            key={video.title}
-                            title={video.title}
-                            channelTitle={video.channelTitle}
-                            viewCount={video.viewCount}
-                            description={video.description}
-                            thumbnail={video.thumbnail}
-                            videoUrl={video.videoUrl}
-                            publishedAt={video.publishedAt}
-                        />
-                    )
-                }
-                {load && <Loader />}
-                {!videos.current.length && !load && <NotFound err={err}/>}
-            </div>
-        </>
+        <Wrapper onScroll={handleBottomScroll} >
+            <Title>{`${ui.videos.result} "${keyword}"`}</Title>
+            {
+                videos.current.map((video: VideoData) =>
+                    <Video
+                        key={video.title}
+                        title={video.title}
+                        channelTitle={video.channelTitle}
+                        viewCount={video.viewCount}
+                        description={video.description}
+                        thumbnail={video.thumbnail}
+                        videoUrl={video.videoUrl}
+                        publishedAt={video.publishedAt}
+                    />
+                )
+            }
+            {load && <Loader />}
+            {!videos.current.length && !load && <NotFound err={err} />}
+        </Wrapper>
     );
 };
 
