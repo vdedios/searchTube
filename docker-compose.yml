@@ -3,7 +3,7 @@ services:
   app:
     build: ./backend
     env_file:
-      - ./backend/config.env
+      - ./backend/template.config.env
     ports:
       - "5000:5000"
 
