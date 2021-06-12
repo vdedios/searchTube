@@ -1,14 +1,14 @@
-# searchTube
+# searchTube 📺
 A minimalistic solution for finding YouTube videos. Search and display the first 200 YouTube videos that match a certain keyword.
 
 ## Brief description
 
 This app is composed of two parts:
 
-1. **Frontend :** Made with React + Typescript. Search and display video
+1. **Frontend :** Made with `React + Typescript`. Search and display video
 list that matches search query.
-2. **Backend :** Made with Flask + Google-API Python tools. Fetch from
-YouTube API and manipulate it to display desired results.
+2. **Backend :** Made with `Flask + Google-API` Python tools. Fetch from
+YouTube API and manipulate it to return desired results.
 ## Run it locally
 
 ### First option
