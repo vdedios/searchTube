@@ -12,3 +12,7 @@ export interface SearchResults {
   videos: VideoData[];
   nextPageToken: string;
 }
+
+export interface KeywordParam {
+    keyword: string;
+}

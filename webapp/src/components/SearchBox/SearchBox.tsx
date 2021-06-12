@@ -1,18 +1,18 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import MakrwatchLogo from '../../assets/makrwatchLogo.png';
 import { SearchWrapper, Logo, Form, Input, Button, MagnifyingGlass } from './SearchBox.styled';
 import { ui } from '../../mocks';
 
-interface SearchBoxProps {
-    setKeyword: React.Dispatch<React.SetStateAction<string>>;
-}
+const SearchBox: React.FC = () => {
 
-const SearchBox: React.FC<SearchBoxProps> = ({ setKeyword }: SearchBoxProps) => {
+    const history = useHistory();
 
     const search = (event: any) => {
         event.preventDefault();
-        setKeyword(event.target.elements[0].value)
+        const keyword = event.target.elements[0].value;
+        history.push(`/results/${keyword}`);
     }
 
     return (

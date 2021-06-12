@@ -4,6 +4,6 @@ export const ui = {
     },
     videos: {
         result: 'Search Results for',
-        maxPagination: 3,
+        maxPagination: 20,
     }
 }
