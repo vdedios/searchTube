@@ -18,6 +18,7 @@ const VideoList: React.FC = () => {
 
     const [maxPagination, setMaxPagination] = useState(ui.videos.maxPagination);
     const [load, setLoad] = useState(true);
+    const [err, setErr] = useState('');
 
     const handleBottomScroll = (ev: UIEvent<HTMLDivElement>) => {
         const target = ev.target as Element;
@@ -29,19 +30,24 @@ const VideoList: React.FC = () => {
     }
 
     useEffect(() => {
-        if (load && maxPagination > 0) {
+        if (!err && load && maxPagination > 0) {
             client.getSearchResults(keyword, nextPage.current)
                 .then(data => {
-                    videos.current = videos.current.concat(data.videos);
-                    setLoad(false);
-                    nextPage.current = data.nextPageToken;
-                    if (!nextPage.current) {
-                        setMaxPagination(0);
+                    if (data.errCode) {
+                        setErr(data.errCode);
+                        setLoad(false);
+                    } else {
+                        videos.current = videos.current.concat(data.videos);
+                        setLoad(false);
+                        nextPage.current = data.nextPageToken;
+                        if (!nextPage.current) {
+                            setMaxPagination(0);
+                        }
                     }
                 })
                 .catch(err => console.error(err));
         }
-    }, [maxPagination, keyword, load]);
+    }, [maxPagination, keyword, load, err]);
 
 
     return (
@@ -66,7 +72,7 @@ const VideoList: React.FC = () => {
                     )
                 }
                 {load && <Loader />}
-                {!videos.current.length && !load && <NotFound/>}
+                {!videos.current.length && !load && <NotFound err={err}/>}
             </div>
         </>
     );

@@ -12,9 +12,14 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 def search_controller():
     keyword = request.args.get('keyword')
     page_token = request.args.get('page')
-    list = get_search_ids(keyword, page_token)
-    videos = get_video_list(list)
-    return {
-        'videos': videos,
-        'nextPageToken': list['nextPageToken']
-    }
+    try:
+        list = get_search_ids(keyword, page_token)
+        videos = get_video_list(list)
+        return {
+            'videos': videos,
+            'nextPageToken': list['nextPageToken']
+        }
+    except Exception as e:
+        return {
+            'errCode': str(e)
+        }
