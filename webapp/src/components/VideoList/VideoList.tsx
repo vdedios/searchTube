@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import ApiClient from '../../services/ApiClient';
 import { VideoData, KeywordParam } from '../../models';
-import { Video, Loader } from './components';
+import { Video, Loader, NotFound } from './components';
 import { Title } from './VideoList.styled';
 import { ui } from '../../mocks';
 
@@ -66,6 +66,7 @@ const VideoList: React.FC = () => {
                     )
                 }
                 {load && <Loader />}
+                {!videos.current.length && !load && <NotFound/>}
             </div>
         </>
     );

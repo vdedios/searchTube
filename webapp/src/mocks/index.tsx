@@ -5,5 +5,8 @@ export const ui = {
     videos: {
         result: 'Search Results for',
         maxPagination: 20,
+    },
+    error: {
+        notFound: 'Not results found, try with another keyword.',
     }
 }
