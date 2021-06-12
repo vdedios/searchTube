@@ -8,5 +8,6 @@ export const ui = {
     },
     error: {
         notFound: 'Not results found, try with another keyword.',
+        failReq: 'Failed to fecth results. Error code',
     }
 }

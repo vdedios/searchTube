@@ -11,6 +11,7 @@ export interface VideoData {
 export interface SearchResults {
   videos: VideoData[];
   nextPageToken: string;
+  errCode?: string;
 }
 
 export interface KeywordParam {
