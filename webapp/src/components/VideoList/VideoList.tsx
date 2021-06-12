@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useRef, UIEvent } from 'react';
+import { useParams } from 'react-router-dom';
 
 import ApiClient from '../../services/ApiClient';
-import { VideoData } from '../../models';
+import { VideoData, KeywordParam } from '../../models';
 import { Video, Loader } from './components';
 import { Title } from './VideoList.styled';
 import { ui } from '../../mocks';
 
-interface VideoListProps {
-    keyword: string;
-}
-
 const client = new ApiClient();
 
-const VideoList: React.FC<VideoListProps> = ({ keyword }: VideoListProps) => {
+const VideoList: React.FC = () => {
+
+    const { keyword } = useParams<KeywordParam>();
 
     let nextPage = useRef('');
     let videos = useRef<Array<VideoData>>([]);

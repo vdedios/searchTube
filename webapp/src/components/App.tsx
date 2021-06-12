@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import { SearchBox, VideoList } from './index'
 
 const App: React.FC = () => {
 
-    const [keyword, setKeyword] = useState('');
-
     return (
-        <div>
-            { !keyword && <SearchBox setKeyword={setKeyword} />}
-            { keyword && <VideoList keyword={keyword}/>}
-        </div>
+         <BrowserRouter>
+          <Switch>
+            <Route exact path="/results/:keyword" component={VideoList} />
+            <Route exact path="/" component={SearchBox} />
+            <Redirect to="/" />
+          </Switch>
+        </BrowserRouter>       
     );
 }
 
