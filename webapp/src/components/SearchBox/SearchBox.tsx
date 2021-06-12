@@ -2,6 +2,7 @@ import React from 'react';
 
 import MakrwatchLogo from '../../assets/makrwatchLogo.png';
 import { SearchWrapper, Logo, Form, Input, Button, MagnifyingGlass } from './SearchBox.styled';
+import { ui } from '../../mocks';
 
 interface SearchBoxProps {
     setKeyword: React.Dispatch<React.SetStateAction<string>>;
@@ -21,7 +22,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ setKeyword }: SearchBoxProps) => 
                 onSubmit={search}
             >
                 <Input
-                    placeholder='Search topics on the videos you want to find'
+                    placeholder={ui.search.placeholder}
                 />
                 <Button>
                     <MagnifyingGlass/>

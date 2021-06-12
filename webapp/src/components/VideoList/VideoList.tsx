@@ -4,6 +4,7 @@ import ApiClient from '../../services/ApiClient';
 import { VideoData } from '../../models';
 import { Video, Loader } from './components';
 import { Title } from './VideoList.styled';
+import { ui } from '../../mocks';
 
 interface VideoListProps {
     keyword: string;
@@ -16,7 +17,7 @@ const VideoList: React.FC<VideoListProps> = ({ keyword }: VideoListProps) => {
     let nextPage = useRef('');
     let videos = useRef<Array<VideoData>>([]);
 
-    const [maxPagination, setMaxPagination] = useState(2);
+    const [maxPagination, setMaxPagination] = useState(ui.videos.maxPagination);
     const [load, setLoad] = useState(true);
 
     const handleBottomScroll = (ev: UIEvent<HTMLDivElement>) => {
@@ -50,7 +51,7 @@ const VideoList: React.FC<VideoListProps> = ({ keyword }: VideoListProps) => {
                 onScroll={handleBottomScroll}
                 style={{ overflowY: 'scroll', position: 'fixed', top: 0, right: 0, bottom: 0, left: 0, }}
             >
-                <Title>{`Search Results for "${keyword}"`}</Title>
+                <Title>{`${ui.videos.result} "${keyword}"`}</Title>
                 {
                     videos.current.map((video: VideoData) =>
                         <Video
