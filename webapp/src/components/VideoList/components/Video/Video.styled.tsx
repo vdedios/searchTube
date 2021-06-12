@@ -1,9 +1,16 @@
 import styled from 'styled-components';
 
-export const VideoWrapper = styled.div`
+export const VideoWrapper = styled.a`
     display: flex;
     flex-direction: row;
-    margin: 14px 40px
+    margin: 7px 40px;
+    padding: 7px;
+    text-decoration: none;
+    border-radius: 4px;
+    position: relative;
+    &:hover {
+        background-color: #e8e8e8;
+    }
 `;
 
 export const Thumbnail = styled.img`
@@ -23,11 +30,15 @@ export const Title = styled.h1`
     font-style: normal;
     font-weight: 400;
     margin: 0px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     color: #465870;
 `;
 
 export const Channel = styled.p`
     margin: 3px 0 0 0;
+    padding: 3px 0;
     font-family: Helvetica Neue;
     font-size: 12px;
     font-weight: 400;
@@ -37,6 +48,7 @@ export const Channel = styled.p`
 export const ViewsWrapper = styled.div`
     display: flex;
     flex-direction: row;
+    padding: 3px 0 15px 0;
 `;
 
 
@@ -64,5 +76,21 @@ export const Description = styled.p`
     font-family: OpenSans;
     font-size: 12px;
     letter-spacing: 0px;
+    line-height: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     color: #8D9798;
+    margin-top: 0px;
 `;
+
+export const Published = styled.p`
+    font-family: Helvetica Neue;
+    font-size: 12px;
+    color: #8D9798;
+    position: absolute;
+    bottom: 7px;
+    margin: 0px;
+`; 
