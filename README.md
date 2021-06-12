@@ -1,6 +1,14 @@
 # searchTube
-A minimalistic solution for finding YouTube videos
+A minimalistic solution for finding YouTube videos. Search and display the first 200 YouTube videos that match a certain keyword.
 
+## Brief description
+
+This app is composed of two parts:
+
+1. **Frontend :** Made with React + Typescript. Search and display video
+list that matches search query.
+2. **Backend :** Made with Flask + Google-API Python tools. Fetch from
+YouTube API and manipulate it to display desired results.
 ## Run it locally
 
 ### First option
@@ -28,8 +36,6 @@ open a browser and navigate to `http://localhost:3000`
 You can also try to run both services independently:
 
 1. **Frontend :** Go to `/webapp` and run `yarn && yarn start`
-2. Then, go to `./backend` and add your YouTube `API_KEY` into the
-`template.config.env` file.
-3. **Backend :** Go to `/backend` and run `pip install -r requirements.txt
-&& flask run --host=0.0.0.0`
-4. Navigate to `http://localhost:3000`
+2. **Backend :** Go to `/backend` and run `pip install -r requirements.txt
+&& export API_KEY='your_api_key' && flask run --host=0.0.0.0`
+3. Navigate to `http://localhost:3000`
