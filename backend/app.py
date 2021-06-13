@@ -23,3 +23,6 @@ def search_controller():
         return {
             'errCode': str(e)
         }
+
+if __name__ == '__main__':
+    app.run(threaded=True, port=5000)
