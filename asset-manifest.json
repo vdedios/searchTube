@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.0022cd7e.chunk.css",
-    "main.js": "/static/js/main.66c325c8.chunk.js",
-    "main.js.map": "/static/js/main.66c325c8.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.533164ea.js",
-    "runtime-main.js.map": "/static/js/runtime-main.533164ea.js.map",
-    "static/js/2.e57f8739.chunk.js": "/static/js/2.e57f8739.chunk.js",
-    "static/js/2.e57f8739.chunk.js.map": "/static/js/2.e57f8739.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.0022cd7e.chunk.css.map": "/static/css/main.0022cd7e.chunk.css.map",
-    "static/js/2.e57f8739.chunk.js.LICENSE.txt": "/static/js/2.e57f8739.chunk.js.LICENSE.txt",
-    "static/media/makrwatchLogo.64b80345.png": "/static/media/makrwatchLogo.64b80345.png"
+    "main.css": "/searchTube/static/css/main.0022cd7e.chunk.css",
+    "main.js": "/searchTube/static/js/main.2b57f48c.chunk.js",
+    "main.js.map": "/searchTube/static/js/main.2b57f48c.chunk.js.map",
+    "runtime-main.js": "/searchTube/static/js/runtime-main.9b39fa90.js",
+    "runtime-main.js.map": "/searchTube/static/js/runtime-main.9b39fa90.js.map",
+    "static/js/2.baf7f8b4.chunk.js": "/searchTube/static/js/2.baf7f8b4.chunk.js",
+    "static/js/2.baf7f8b4.chunk.js.map": "/searchTube/static/js/2.baf7f8b4.chunk.js.map",
+    "index.html": "/searchTube/index.html",
+    "static/css/main.0022cd7e.chunk.css.map": "/searchTube/static/css/main.0022cd7e.chunk.css.map",
+    "static/js/2.baf7f8b4.chunk.js.LICENSE.txt": "/searchTube/static/js/2.baf7f8b4.chunk.js.LICENSE.txt",
+    "static/media/makrwatchLogo.64b80345.png": "/searchTube/static/media/makrwatchLogo.64b80345.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.533164ea.js",
-    "static/js/2.e57f8739.chunk.js",
+    "static/js/runtime-main.9b39fa90.js",
+    "static/js/2.baf7f8b4.chunk.js",
     "static/css/main.0022cd7e.chunk.css",
-    "static/js/main.66c325c8.chunk.js"
+    "static/js/main.2b57f48c.chunk.js"
   ]
 }
