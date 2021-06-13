@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/searchtube/static/css/main.0022cd7e.chunk.css",
+    "main.js": "/searchtube/static/js/main.1562087d.chunk.js",
+    "main.js.map": "/searchtube/static/js/main.1562087d.chunk.js.map",
+    "runtime-main.js": "/searchtube/static/js/runtime-main.e00d6b25.js",
+    "runtime-main.js.map": "/searchtube/static/js/runtime-main.e00d6b25.js.map",
+    "static/js/2.0faca871.chunk.js": "/searchtube/static/js/2.0faca871.chunk.js",
+    "static/js/2.0faca871.chunk.js.map": "/searchtube/static/js/2.0faca871.chunk.js.map",
+    "index.html": "/searchtube/index.html",
+    "static/css/main.0022cd7e.chunk.css.map": "/searchtube/static/css/main.0022cd7e.chunk.css.map",
+    "static/js/2.0faca871.chunk.js.LICENSE.txt": "/searchtube/static/js/2.0faca871.chunk.js.LICENSE.txt",
+    "static/media/makrwatchLogo.64b80345.png": "/searchtube/static/media/makrwatchLogo.64b80345.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e00d6b25.js",
+    "static/js/2.0faca871.chunk.js",
+    "static/css/main.0022cd7e.chunk.css",
+    "static/js/main.1562087d.chunk.js"
+  ]
+}
