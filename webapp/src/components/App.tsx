@@ -6,7 +6,7 @@ import { SearchBox, VideoList } from './index'
 const App: React.FC = () => {
 
     return (
-         <BrowserRouter>
+         <BrowserRouter  basename={process.env.PUBLIC_URL}>
           <Switch>
             <Route exact path="/results/:keyword" component={VideoList} />
             <Route exact path="/" component={SearchBox} />
