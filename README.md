@@ -1,5 +1,5 @@
 # searchTube 📺
-A minimalistic solution for finding YouTube videos. Search and display the first 200 YouTube videos that match a certain keyword.
+Search and display the first 200 YouTube videos that match a certain keyword.
 
 ## Brief description
 
