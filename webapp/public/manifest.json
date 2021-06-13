@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "SearchTube",
+  "name": "Search topics on the videos you want to find",
   "icons": [
     {
       "src": "favicon.ico",
